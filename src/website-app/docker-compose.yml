@@ -16,7 +16,7 @@ services:
       - /etc/resolv.conf:/etc/resolv.conf
       - ./.config/dns-proxy.json:/app/conf/config.json
 
-  www.jmaeff.me:
+  app.jmaeff.me:
     image: nginx
     ports:
       - "80:80"

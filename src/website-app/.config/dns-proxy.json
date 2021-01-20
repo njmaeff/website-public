@@ -9,7 +9,7 @@
       "hostnames": [
         {
           "id": 1,
-          "hostname": "www.jmaeff.me",
+          "hostname": "app.jmaeff.me",
           "ip": "127.0.0.1",
           "ttl": 255
         },
