@@ -65,7 +65,7 @@ export const loader: webpack.loader.Loader = function (input) {
             }
 
             const imageHash = getHash(
-                this.resourcePath + this.resourceQuery + input,
+                this.resourcePath + JSON.stringify(config) + input,
                 -1
             );
             const prefix = imageHash.slice(0, 8);
