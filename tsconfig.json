@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "declaration": true,
+    "jsx": "react",
+    "baseUrl": "src",
+    "skipLibCheck": true,
+    "paths": {
+      "@njmaeff/*": [
+        "./*"
+      ]
+    }
+  }
+}

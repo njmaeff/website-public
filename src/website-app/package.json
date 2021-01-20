@@ -1,0 +1,11 @@
+{
+  "name": "@njmaeff/website-app",
+  "description": "general app notes",
+  "version": "0.0.1",
+  "scripts": {
+    "db": "docker-compose up db-admin.www.jmaeff.me",
+    "ui": "docker-compose up storybook.www.jmaeff.me",
+    "start": "docker-compose up www.jmaeff.me",
+    "start.admin": "docker-compose up admin.www.jmaeff.me"
+  }
+}

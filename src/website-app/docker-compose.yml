@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+
+  node:
+    build:
+      dockerfile: .docker/node.Dockerfile
+      context: .
+    image: njmaeff/node-website
+
+  dns-proxy:
+    image: defreitas/dns-proxy-server
+    command: -default-dns=${DNS_PATCH:-true}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/resolv.conf:/etc/resolv.conf
+      - ./.config/dns-proxy.json:/app/conf/config.json
+
+  www.jmaeff.me:
+    image: nginx
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_PORT=80
+    volumes:
+      - ./.config/nginx-default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - ui.www.jmaeff.me
+      - storybook.www.jmaeff.me
+      - dns-proxy
+
+  ui.www.jmaeff.me:
+    image: njmaeff/node-website
+    command: yarn workspace @njmaeff/website-ui start
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../../:/workspace
+
+  storybook.www.jmaeff.me:
+    image: njmaeff/node-website
+    command: yarn workspace @njmaeff/website-ui storybook
+    ports:
+      - "6006:6006"
+    volumes:
+      - ../../:/workspace
