@@ -95,7 +95,7 @@ export default (env) => ({
                         loader: '@njmaeff/webpack-loader-image',
                         options: {
                             skip: () => false,
-                            placeholder: false
+                            placeholder: true
                         }
                     }
                 ]

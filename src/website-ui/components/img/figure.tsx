@@ -1,8 +1,10 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import styled, {ThemeContext} from "styled-components";
+import type {LoadedImage} from "@njmaeff/webpack-loader-image/types";
 
 export interface Figure {
     caption: string
+    photo: LoadedImage
 }
 
 const StyledFigure = styled.figure`
@@ -18,11 +20,21 @@ const StyledFigure = styled.figure`
   }
 `;
 
-export const Figure: React.FC<JSX.IntrinsicElements['img'] & Figure> = ({caption, ...imgProps}) => {
-
+export const Figure: React.FC<JSX.IntrinsicElements['img'] & Figure> = ({
+                                                                            caption,
+                                                                            photo
+                                                                        }) => {
+    const [isLoaded, setLoaded] = useState(false);
+    let props;
+    if (isLoaded) {
+        props = photo;
+    } else {
+        props = {src: photo.placeholder}
+    }
     return (
         <StyledFigure>
-            <img {...imgProps}/>
+            <img {...props}
+                 onLoad={() => setLoaded(true)}/>
             <figcaption>
                 {caption}
             </figcaption>
@@ -34,6 +46,6 @@ export const DynamicFigure = ({sm, lg, caption}) => {
 
     const img = theme.media.med || theme.media.lg ? lg : sm
 
-    return <Figure {...img}
+    return <Figure photo={img}
                    caption={caption}/>
 };
