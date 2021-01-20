@@ -26,12 +26,5 @@ export const ContainerContent = styled.div<{ noTypography?: boolean, noBackgroun
     height: 100vh;
     background: ${({theme, noBackground}) => !noBackground && theme.palette.light};
     color: ${({theme}) => theme.palette.dark};
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE 10+ */
-
-    ::-webkit-scrollbar { /* WebKit */
-        width: 0px;
-    }
     ${(props) => !props.noTypography && typography}
 `;
