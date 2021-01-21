@@ -1,8 +1,7 @@
-import {useContext} from "react";
-import {ThemeContext} from "styled-components";
+import {useTheme} from "@njmaeff/website-ui/hooks/useTheme";
 
 export const useWidth = ({lg = '100%', med = '100%'}) => {
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
     if (theme.media.lg) {
         return lg
     }

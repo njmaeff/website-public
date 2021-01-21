@@ -1,6 +1,7 @@
 import {AppBar, Box, Tab, Tabs,} from "@material-ui/core";
-import React, {useContext, useEffect, useRef, useState} from "react";
-import styled, {ThemeContext} from "styled-components";
+import React, {useEffect, useRef, useState} from "react";
+import styled from "styled-components";
+import {useTheme} from "@njmaeff/website-ui/hooks/useTheme";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -53,7 +54,7 @@ export function SimpleTabs({
     const [value, setValue] = React.useState(0);
     const [height, setHeight] = useState(undefined);
     const appBar = useRef<HTMLDivElement>()
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
 
     useEffect(() => {
         setHeight(appBar.current.offsetHeight)

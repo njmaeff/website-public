@@ -1,6 +1,7 @@
-import React, {useContext, useState} from "react";
-import styled, {ThemeContext} from "styled-components";
+import React, {useState} from "react";
+import styled from "styled-components";
 import type {LoadedImage} from "@njmaeff/webpack-loader-image/types";
+import {useTheme} from "@njmaeff/website-ui/hooks/useTheme";
 
 export interface Figure {
     caption: string
@@ -42,7 +43,7 @@ export const Figure: React.FC<JSX.IntrinsicElements['img'] & Figure> = ({
     )
 };
 export const DynamicFigure = ({sm, lg, caption}) => {
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
 
     const img = theme.media.med || theme.media.lg ? lg : sm
 
