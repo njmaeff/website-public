@@ -124,7 +124,8 @@ export default (env) => ({
         new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             template: "./index.html",
-            filename: "./index.html"
+            filename: "./index.html",
+            favicon: './assets/img/favicon.ico'
         }),
         ...(env.bundleanalyzer ? [new BundleAnalyzerPlugin()] : [])
     ]
