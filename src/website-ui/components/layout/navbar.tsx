@@ -47,10 +47,17 @@ const StyledAppBar = styled(AppBar)`
     background-color: ${({theme}) => theme.palette.dark};
 `
 
+interface SimpleTabsOptions {
+    tabs: [string, React.FC][];
+    End?: React.FC;
+    container: React.MutableRefObject<HTMLDivElement>
+}
+
 export function SimpleTabs({
                                tabs,
+                               container,
                                End
-                           }: { tabs: [string, React.FC][], End?: React.FC }) {
+                           }: SimpleTabsOptions) {
     const [value, setValue] = React.useState(0);
     const [height, setHeight] = useState(undefined);
     const appBar = useRef<HTMLDivElement>()
@@ -62,6 +69,7 @@ export function SimpleTabs({
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
+        container.current.scrollTo(0,0)
     };
 
     const TabComponents = tabs.map(([id, _], index) => <StyledTab key={index}
