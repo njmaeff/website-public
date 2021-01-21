@@ -13,7 +13,7 @@ I don't use typescript conventionally. I utilize the static typechecking integra
 ### Running the app
 ```bash
 cd ./src/website-app
-docker-compose up www.jmaeff.me
+docker-compose up app.jmaeff.me
 ```
 
 ## Technology
@@ -34,6 +34,9 @@ Wow, what a great selection of React components I can use!
 Webpack is used for bundling the site. I made a custom loader for generating various image sizes that utilize the srcset attribute with the `image` tag. There are other public plugins available, but I really enjoy using webpack and found I was able to get exactly what I wanted with the loader.
 
 Webpack is a very large project and has many features.
+
+### Vercel
+Free hosting, custom domain names, ssl, and github integration.
 
 ## Special Thanks
 Thank you to the authors of the open source packages I use. I'm sorry if I am using your package incorrectly and will amend any issues that arise.
